@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faHome, faUserFriends, faSuitcase, faEnvelope, faBell } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Header() {
     const navigate = useNavigate();
-
+    const [currentTab , setCurrentTab] = useState("home"); // by default home page will '/' route
+    
     return (
         <div
             style={{
@@ -54,8 +56,12 @@ export default function Header() {
                 <button
                     onClick={() => {
                         navigate('/');
+                        setCurrentTab("home");
                     }}
-                    style={buttonStyle}
+                    style={{
+                        ...buttonStyle,
+                        backgroundColor: currentTab == "home" ? "#b6cdf2" : "white"
+                    }}
                 >
                     <FontAwesomeIcon icon={faHome} /> <br /> <strong>Home</strong>
                 </button>
@@ -63,8 +69,12 @@ export default function Header() {
                 <button
                     onClick={() => {
                         navigate('/mynetwork');
+                        setCurrentTab("mynetwork");
                     }}
-                    style={buttonStyle}
+                    style={{
+                        ...buttonStyle,
+                        backgroundColor: currentTab == "mynetwork" ? "#b6cdf2" : "white"
+                    }}
                 >
                     <FontAwesomeIcon icon={faUserFriends} /> <br /> <strong>My Network</strong>
                 </button>
@@ -72,8 +82,12 @@ export default function Header() {
                 <button
                     onClick={() => {
                         navigate('/jobs');
+                        setCurrentTab("jobs");
                     }}
-                    style={buttonStyle}
+                    style={{
+                        ...buttonStyle,
+                        backgroundColor: currentTab == "jobs" ? "#b6cdf2" : "white"
+                    }}
                 >
                     <FontAwesomeIcon icon={faSuitcase} /> <br /> <strong>Jobs</strong>
                 </button>
@@ -81,8 +95,12 @@ export default function Header() {
                 <button
                     onClick={() => {
                         navigate('/messaging');
+                        setCurrentTab("messaging");
                     }}
-                    style={buttonStyle}
+                    style={{
+                        ...buttonStyle,
+                        backgroundColor: currentTab == "messaging" ? "#b6cdf2" : "white"
+                    }}
                 >
                     <FontAwesomeIcon icon={faEnvelope} /> <br /> <strong>Messaging</strong>
                 </button>
@@ -90,8 +108,12 @@ export default function Header() {
                 <button
                     onClick={() => {
                         navigate('/notifications');
+                        setCurrentTab("notifications");
                     }}
-                    style={buttonStyle}
+                    style={{
+                        ...buttonStyle,
+                        backgroundColor: currentTab == "notifications" ? "#b6cdf2" : "white"
+                    }}
                 >
                     <FontAwesomeIcon icon={faBell} /> <br /> <strong>Notifications</strong>
                 </button>
@@ -107,7 +129,7 @@ const buttonStyle = {
     alignItems: "center",
     justifyContent: "center",
     padding: "10px 12px",
-    backgroundColor: "#ffffff", // Light button background
+    // backgroundColor: "#ffffff", // Light button background
     border: "1px solid #ddd", // Subtle border
     borderRadius: "6px",
     fontSize: "12px",
